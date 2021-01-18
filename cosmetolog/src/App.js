@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Menu />
+      <Menu menuElements="Главная Услуги Прайслист Записаться" />
       <Footer />
     </div>
   );
