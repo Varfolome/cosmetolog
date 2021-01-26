@@ -8,6 +8,21 @@ export default class Visit extends React.Component {
     super(props);
   }
 
+  send() {
+    const API_URL = 'http://localhost:5000/visit';
+    let lastName = document.getElementById("lastName").value;
+    const info = {
+      lastName
+    };
+    fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify(info),
+    headers: {
+      'content-type': 'application/json'
+    }
+  });
+  }
+
   render() {
     return(
       <div className="visit">
@@ -28,10 +43,10 @@ export default class Visit extends React.Component {
             <span className="input-group-text" id="phoneLabel">Телефон</span>
             <input id="phone" name="phone" type="text" className="form-control" placeholder="+375290071994" aria-label="Phone" aria-describedby="phoneLabel" />
           </div>
-          <div className="send-button-wrapper">
-            <button type="submit" className="btn btn-primary">Записаться</button>
-          </div>
         </form>
+        <div className="send-button-wrapper">
+          <button type="submit" className="btn btn-primary" onClick={this.send.bind(this)}>Записаться</button>
+        </div>
       </div>
     );
   }

@@ -1,15 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
 app.post("/visit",(req,res) => {
   const info = {
-        firstName: req.body.firstName.toString(),
         lastName: req.body.lastName.toString(),
-        mail: req.body.mail.toString(),
-        phone: req.body.phone.toString(),
         created: new Date()
       };
   console.log(info);
