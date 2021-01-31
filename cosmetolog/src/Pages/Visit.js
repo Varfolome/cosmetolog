@@ -11,8 +11,14 @@ export default class Visit extends React.Component {
   send() {
     const API_URL = 'http://localhost:5000/visit';
     let lastName = document.getElementById("lastName").value;
+    let firstName = document.getElementById("firstName").value;
+    let mail = document.getElementById("mail").value;
+    let phone = document.getElementById("phone").value;
     const info = {
-      lastName
+      lastName,
+      firstName,
+      mail,
+      phone
     };
     fetch(API_URL, {
     method: 'POST',
@@ -20,7 +26,9 @@ export default class Visit extends React.Component {
     headers: {
       'content-type': 'application/json'
     }
-  });
+  })
+  .then(response => response.json())
+  .then(response => alert(response.message));
   }
 
   render() {

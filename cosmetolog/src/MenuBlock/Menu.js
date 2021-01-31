@@ -11,15 +11,20 @@ export default class Menu extends React.Component {
   }
 
   showPage(pageToShow) {
+
+    document.getElementById(pageToShow).style.background = "red";
+    document.getElementById(this.state.currentPage).style.background = "white";
+
     this.setState((state) => ({
       currentPage : pageToShow
     }));
+
   }
 
   render() {
 
     let menuItems = this.props.menuElements.split(" ");
-    let menuItemsJSX = menuItems.map((menuItem) => <li key={menuItem} className="menu-element" onClick={this.showPage.bind(this,menuItem)}>{menuItem}</li>);
+    let menuItemsJSX = menuItems.map((menuItem) => <li id = {menuItem} key={menuItem} className="menu-element" onClick={this.showPage.bind(this,menuItem)} style={{background : menuItem === "Главная" ? "red" : "white"}}>{menuItem}</li>);
 
     return(
       <div className="main">
